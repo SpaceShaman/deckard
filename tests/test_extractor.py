@@ -18,3 +18,8 @@ def test_extract_email_address_and_mobile_phone_number_pl():
         "email": "spaceshaman@tuta.io",
         "mobile_phone": "792321321",
     }
+
+
+def test_extract_zip_code_pl():
+    text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
+    assert extract(text, [pl.ZIP_CODE]) == {"zip_code": "60-700"}
