@@ -15,3 +15,5 @@ ZIP_CODE = rf"(?P<zip_code>{_ZIP_CODE_PATTERN})"
 CITY = rf"(?<=\b{_ZIP_CODE_PATTERN}\s)(?P<city>[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+)"
 
 STREET_NUMBER = rf"(?:{_STREET_PATTERN})\s+(?P<street_number>{_HOUSE_NO_PATTERN})"
+
+ADDRESS = rf"(?=.*?{STREET})(?=.*?{STREET_NUMBER})(?=.*?{ZIP_CODE})(?=.*?{CITY})"
