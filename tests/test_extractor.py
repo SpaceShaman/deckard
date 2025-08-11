@@ -25,6 +25,11 @@ def test_extract_street_pl():
     assert extract(text, [pl.STREET]) == {"street": "ul. Testowa"}
 
 
+def test_extract_street_number_pl():
+    text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
+    assert extract(text, [pl.STREET_NUMBER]) == {"street_number": "1"}
+
+
 def test_extract_zip_code_pl():
     text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
     assert extract(text, [pl.ZIP_CODE]) == {"zip_code": "60-700"}
