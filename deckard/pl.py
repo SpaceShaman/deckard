@@ -12,7 +12,11 @@ STREET = rf"(?P<street>{_STREET_PATTERN})"
 
 ZIP_CODE = rf"(?P<zip_code>{_ZIP_CODE_PATTERN})"
 
-CITY = rf"(?<=\b{_ZIP_CODE_PATTERN}\s)(?P<city>[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+)"
+_WORD = r"[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+(?:-[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+)*"
+_CONNECT = r"(?:nad|pod|przy|w|we|koło)"
+_TOKEN = rf"(?:{_WORD}|{_CONNECT})"
+
+CITY = rf"(?<=\b{_ZIP_CODE_PATTERN}\s)(?P<city>{_TOKEN}(?:[ -]{_TOKEN}){{0,4}})"
 
 STREET_NUMBER = rf"(?:{_STREET_PATTERN})\s+(?P<street_number>{_HOUSE_NO_PATTERN})"
 

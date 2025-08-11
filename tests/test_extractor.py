@@ -41,10 +41,21 @@ def test_extract_city_pl():
 
 
 def test_extract_address_pl():
-    text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
+    text = "Cześć, mój adres to ulica Jana Pawła 12A, 66-700 Bielsko-Biała. Dziękuję za wiadomość."
     assert extract(text, [pl.ADDRESS]) == {
-        "street": "ul. Testowa",
-        "street_number": "1",
-        "zip_code": "60-700",
-        "city": "Warszawa",
+        "street": "ulica Jana Pawła",
+        "street_number": "12A",
+        "zip_code": "66-700",
+        "city": "Bielsko-Biała",
+    }
+
+
+def test_extract_address_pl_with_multi_word_city():
+    text = "Cześć, mój adres to ulica Jana Pawła 12A, 66-700 Nowe Miasto nad Pilicą. Dziękuję za wiadomość."
+
+    assert extract(text, [pl.ADDRESS]) == {
+        "street": "ulica Jana Pawła",
+        "street_number": "12A",
+        "zip_code": "66-700",
+        "city": "Nowe Miasto nad Pilicą",
     }
