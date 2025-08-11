@@ -20,11 +20,16 @@ def test_extract_email_address_and_mobile_phone_number_pl():
     }
 
 
+def test_extract_street_pl():
+    text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
+    assert extract(text, [pl.STREET]) == {"street": "ul. Testowa"}
+
+
 def test_extract_zip_code_pl():
     text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
     assert extract(text, [pl.ZIP_CODE]) == {"zip_code": "60-700"}
 
 
-def test_extract_street_pl():
+def test_extract_city_pl():
     text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
-    assert extract(text, [pl.STREET]) == {"street": "ul. Testowa"}
+    assert extract(text, [pl.CITY]) == {"city": "Warszawa"}
