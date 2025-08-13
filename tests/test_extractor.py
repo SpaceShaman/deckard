@@ -9,42 +9,30 @@ def test_extract_email_address_pl():
 
 def test_extract_mobile_phone_number_pl():
     text = "Hello, my phone number is +48 792 321 321 can you help me?"
-    assert extract(text, [pl.MOBILE_PHONE]) == {"mobile_phone": "792321321"}
+    assert extract(text, [pl.MOBILE_PHONE]) == {"mobile_phone": "792 321 321"}
 
 
 def test_extract_email_address_and_mobile_phone_number_pl():
     text = "Hello, my email is spaceshaman@tuta.io and my phone number is +48 792 321 321 can you help me?"
     assert extract(text, [pl.EMAIL, pl.MOBILE_PHONE]) == {
         "email": "spaceshaman@tuta.io",
-        "mobile_phone": "792321321",
+        "mobile_phone": "792 321 321",
     }
 
 
-def test_extract_street_pl():
-    text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
-    assert extract(text, [pl.STREET]) == {"street": "ul. Testowa"}
-
-
-def test_extract_street_number_pl():
-    text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
-    assert extract(text, [pl.STREET_NUMBER]) == {"street_number": "1"}
-
-
-def test_extract_zip_code_pl():
-    text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
-    assert extract(text, [pl.ZIP_CODE]) == {"zip_code": "60-700"}
-
-
-def test_extract_city_pl():
-    text = "Cześć, mój adres to ul. Testowa 1, 60-700 Warszawa"
-    assert extract(text, [pl.CITY]) == {"city": "Warszawa"}
+def test_extract_email_address_and_mobile_phone_number_without_mobile_in_text_pl():
+    text = "Hello, my email is spaceshaman@tuta.io and i dont have a mobile phone number can you help me?"
+    assert extract(text, [pl.EMAIL, pl.MOBILE_PHONE]) == {
+        "email": "spaceshaman@tuta.io",
+        "mobile_phone": None,
+    }
 
 
 def test_extract_address_pl():
     text = "Cześć, mój adres to ulica Jana Pawła 12A, 66-700 Bielsko-Biała. Dziękuję za wiadomość."
     assert extract(text, [pl.ADDRESS]) == {
         "street": "ulica Jana Pawła",
-        "street_number": "12A",
+        "building": "12A",
         "zip_code": "66-700",
         "city": "Bielsko-Biała",
     }
@@ -55,7 +43,29 @@ def test_extract_address_pl_with_multi_word_city():
 
     assert extract(text, [pl.ADDRESS]) == {
         "street": "ulica Jana Pawła",
-        "street_number": "12A",
+        "building": "12A",
         "zip_code": "66-700",
         "city": "Nowe Miasto nad Pilicą",
+    }
+
+
+def test_extract_address_pl_with_small_city_without_street():
+    text = "Cześć, mój adres to Michałowo 1, 66-700 Dziękuję za wiadomość."
+    assert extract(text, [pl.ADDRESS]) == {
+        "street": None,
+        "building": "1",
+        "zip_code": "66-700",
+        "city": "Michałowo",
+    }
+
+
+def test_extract_address_mobile_phone_and_email_pl():
+    text = "Witaj,\n\nmój adres to ulica Jana Pawła 12A, 66-700 Bielsko-Biała. Dziękuję za wiadomość.\n\nMobile: 792 321 321\nEmail: spaceshaman@tuta.io\n\nPozdrawiam,\nPan XYZ"
+    assert extract(text, [pl.ADDRESS, pl.MOBILE_PHONE, pl.EMAIL]) == {
+        "street": "ulica Jana Pawła",
+        "building": "12A",
+        "zip_code": "66-700",
+        "city": "Bielsko-Biała",
+        "mobile_phone": "792 321 321",
+        "email": "spaceshaman@tuta.io",
     }
