@@ -6,7 +6,9 @@ _STREET = r"(?P<street>(?:ul\.|al\.|pl\.|os\.|ulica|aleja|plac)\s+[A-ZĄĆĘŁŃ
 
 _ZIP_CODE = r"(?P<zip_code>\d{2}-\d{3})"
 
-_BUILDING = r"(?P<building>\d+[A-Za-z]?(?:/\d+[A-Za-z]?)?)"
+_BUILDING = r"(?P<building>\d+[A-Za-z]?)"
+
+_APARTMENT = rf"(?<=\b{_BUILDING}[ /])(?P<apartment>\d+[A-Za-z]?)"
 
 _WORD = r"[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+(?:-[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+)*"
 _CONNECT = r"(?:nad|pod|przy|w|we|koło)"
@@ -18,9 +20,7 @@ _CITY_0 = rf"(?<=\b{_ZIP_CODE}\s){_CITY}"
 
 _CITY_1 = rf"{_CITY}(?=\s+{_BUILDING}\b)(?=.*?\b{_ZIP_CODE}\b)"
 
-_ADDRESS_0 = (
-    rf"(?s)^(?=.*?{_STREET})(?=.*?{_BUILDING})(?=.*?{_ZIP_CODE})(?=.*?{_CITY_0})"
-)
+_ADDRESS_0 = rf"(?s)^(?=.*?{_STREET})(?=.*?{_BUILDING})(?=.*?{_APARTMENT})(?=.*?{_ZIP_CODE})(?=.*?{_CITY_0})"
 
 _ADDRESS_1 = (
     rf"(?s)^(?=.*?{_CITY_1})(?=.*?\b(?P<building>{_BUILDING})\b)(?=.*?{_ZIP_CODE})"
