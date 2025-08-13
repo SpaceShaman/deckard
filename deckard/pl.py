@@ -32,7 +32,7 @@ _ADDRESS_0 = (
 _ADDRESS_1 = (
     r"(?s)^"
     rf"(?=.*?{_CITY_1})"
-    rf"(?=.*?\b(?P<building>{_BUILDING})\b)"
+    rf"(?=.*?{_BUILDING})"
     rf"(?:(?=.*?{_APARTMENT}))?"  # ← optional *lookahead*
     rf"(?=.*?{_ZIP_CODE})"
 )
