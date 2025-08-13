@@ -1,5 +1,3 @@
-EMAIL = r"(?P<email>\w+@\w+\.\w+)"
-
 MOBILE_PHONE = r"(?P<mobile_phone>\d{3}\s?\d{3}\s?\d{3})"
 
 _STREET = r"(?P<street>(?:ul\.|al\.|pl\.|os\.|ulica|aleja|plac)\s+[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+(?:[\s-][A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+)*)"
