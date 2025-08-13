@@ -6,11 +6,11 @@ _STREET = r"(?P<street>(?:ul\.|al\.|pl\.|os\.|ulica|aleja|plac)\s+[A-ZĄĆĘŁŃ
 
 _ZIP_CODE = r"(?P<zip_code>\d{2}-\d{3})"
 
+_BUILDING = r"(?P<building>\d+[A-Za-z]?(?:/\d+[A-Za-z]?)?)"
+
 _WORD = r"[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+(?:-[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż]+)*"
 _CONNECT = r"(?:nad|pod|przy|w|we|koło)"
 _TOKEN = rf"(?:{_WORD}|{_CONNECT})"
-
-_BUILDING = r"(?P<building>\d+[A-Za-z]?(?:/\d+[A-Za-z]?)?)"
 
 _CITY = rf"(?P<city>{_TOKEN}(?:[ -]{_TOKEN}){{0,4}})"
 

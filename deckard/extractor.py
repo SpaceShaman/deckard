@@ -3,9 +3,8 @@ from typing import Iterable
 
 
 def extract(text: str, patterns: Iterable[str]) -> dict | None:
-    combined_pattern = r"(?s)"
-    for pattern in patterns:
-        combined_pattern += rf"(?=.*?{pattern})"
-    result = regex.search(combined_pattern, text)
+    lookaheads = "".join(rf"(?:(?=.*?{p}))?" for p in patterns)
+    combined = rf"(?s)^{lookaheads}.*$"
+    result = regex.search(combined, text)
     if result:
         return result.groupdict()
