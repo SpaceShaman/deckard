@@ -16,7 +16,7 @@ _TOKEN = rf"(?:{_WORD}|{_CONNECT})"
 
 _CITY = rf"(?P<city>{_TOKEN}(?:[ -]{_TOKEN}){{0,4}})"
 
-_CITY_0 = rf"(?<=\b{_ZIP_CODE}\s){_CITY}"
+_CITY_0 = rf"(?<=\b{_ZIP_CODE}[\s,]+){_CITY}"
 
 _CITY_1 = rf"{_CITY}(?=\s+{_BUILDING}\b)(?=.*?\b{_ZIP_CODE}\b)"
 
