@@ -16,3 +16,18 @@ def test_search_with_multiple_patterns():
         "zip_code": "66-700",
         "city": "Bielsko-Biała",
     }
+
+
+def test_search_with_multiple_patterns_and_no_match_at_all():
+    text = "Hello, my email is spaceshaman@tuta.io and my address is ul. Tesotowa 12/6A, 66-700 Bielsko-Biała. Have a nice day"
+    result = search([standard.EMAIL, pl.MOBILE_PHONE, pl.ADDRESS], text)
+
+    assert result.groupdict() == {  # type: ignore
+        "email": "spaceshaman@tuta.io",
+        "mobile_phone": None,
+        "street": "ul. Tesotowa",
+        "building": "12",
+        "apartment": "6A",
+        "zip_code": "66-700",
+        "city": "Bielsko-Biała",
+    }
