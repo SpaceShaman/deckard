@@ -52,6 +52,17 @@ def test_extract_address_pl_with_multi_word_city():
 
 
 def test_extract_address_pl_with_small_city_without_street():
+    text = "Cześć, mój adres to Michałowo 1/2, 66-700 Dziękuję za wiadomość."
+    assert extract(text, [pl.ADDRESS]) == {
+        "street": None,
+        "building": "1",
+        "apartment": "2",
+        "zip_code": "66-700",
+        "city": "Michałowo",
+    }
+
+
+def test_extract_address_pl_with_small_city_without_street_and_apartment():
     text = "Cześć, mój adres to Michałowo 1, 66-700 Dziękuję za wiadomość."
     assert extract(text, [pl.ADDRESS]) == {
         "street": None,
