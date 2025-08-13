@@ -20,19 +20,25 @@ _CITY_1 = rf"{_CITY}(?=\s+{_BUILDING}\b)(?=.*?\b{_ZIP_CODE}\b)"
 
 _ADDRESS_0 = (
     rf"(?s)^"
-    rf"(?=.*?{_STREET})"
-    rf"(?=.*?{_BUILDING})"
-    rf"(?:(?=.*?{_APARTMENT}))?"  # ← optional *lookahead*
-    rf"(?=.*?{_ZIP_CODE})"
-    rf"(?=.*?{_CITY_0})"
+    rf"(?=.*?"
+    rf"{_STREET}"
+    rf"\s+{_BUILDING}"
+    rf"(?:[ /]{_APARTMENT})?"
+    rf"\s*,?\s*"
+    rf"{_ZIP_CODE}"
+    rf"[\s,]+{_CITY_0}"
+    rf")"
 )
 
 _ADDRESS_1 = (
-    r"(?s)^"
-    rf"(?=.*?{_CITY_1})"
-    rf"(?=.*?{_BUILDING})"
-    rf"(?:(?=.*?{_APARTMENT}))?"  # ← optional *lookahead*
-    rf"(?=.*?{_ZIP_CODE})"
+    rf"(?s)^"
+    rf"(?=.*?"
+    rf"{_CITY_1}"
+    rf"\s+{_BUILDING}"
+    rf"(?:[ /]{_APARTMENT})?"
+    rf"\s*,?\s*"
+    rf"{_ZIP_CODE}"
+    rf")"
 )
 
 ADDRESS = rf"(?x)(?|{_ADDRESS_0}|{_ADDRESS_1})"
