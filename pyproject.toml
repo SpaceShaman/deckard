@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "deckard"
-version = "0.1.0"
+version = "0.0.1"
 description = ""
 authors = ["SpaceShaman <spaceshaman@tuta.io>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.9"
 regex = "^2025.7.34"
 
 
