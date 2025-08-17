@@ -2,7 +2,14 @@
 
 <p align="center">Extract structured data from unstructured text — no AI, just regular expressions. 🔍</p>
 
----
+[![GitHub License](https://img.shields.io/github/license/SpaceShaman/deckard)](https://github.com/SpaceShaman/deckard?tab=MIT-1-ov-file)
+[![Tests](https://img.shields.io/github/actions/workflow/status/SpaceShaman/deckard/release.yml?label=tests)](https://app.codecov.io/github/SpaceShaman/deckard)
+[![Codecov](https://img.shields.io/codecov/c/github/SpaceShaman/deckard)](https://app.codecov.io/github/SpaceShaman/deckard)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/deckard)](https://pypi.org/project/deckard)
+[![PyPI - Version](https://img.shields.io/pypi/v/deckard)](https://pypi.org/project/deckard)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
+[![Linting: Ruff](https://img.shields.io/badge/linting-Ruff-black?logo=ruff&logoColor=black)](https://github.com/astral-sh/ruff)
+[![Pytest](https://img.shields.io/badge/testing-Pytest-red?logo=pytest&logoColor=red)](https://docs.pytest.org/)
 
 > Deckard is a library of regular-expression patterns for extracting structured data (addresses, phone numbers, email addresses, etc.) and a small set of helper utilities that make using those patterns easier.
 
