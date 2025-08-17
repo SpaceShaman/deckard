@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "deckard"
-version = "0.0.2"
+version = "0.0.1"
 description = "Extract structured data from unstructured text — no AI, just regular expressions. 🔍"
 license = "MIT"
 authors = ["SpaceShaman <spaceshaman@tuta.io>"]
