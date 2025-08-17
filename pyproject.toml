@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "deckard"
-version = "0.0.1"
+version = "0.0.2"
 description = "Extract structured data from unstructured text — no AI, just regular expressions. 🔍"
 license = "MIT"
 authors = ["SpaceShaman <spaceshaman@tuta.io>"]
@@ -11,13 +11,13 @@ documentation = "https://github.com/SpaceShaman/deckard"
 keywords = ["regex", "data-extraction", "regular-expression"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-regex = "^2025.7.34"
-
+python = "^3.10"
+regex = "^2025"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.4.1"
-debugpy = "^1.8.16"
+pytest = "^8"
+pytest-cov = "^5"
+debugpy = "^1"
 
 [build-system]
 requires = ["poetry-core"]
