@@ -4,7 +4,7 @@
 
 ---
 
-> Deckard is a library of regular-expression patterns for extracting structured data (addresses, phone numbers, email addresses, etc.) and a small set of helper utilities that make using those patterns easier. 🧩
+> Deckard is a library of regular-expression patterns for extracting structured data (addresses, phone numbers, email addresses, etc.) and a small set of helper utilities that make using those patterns easier.
 
 > Status: very early-stage project. Right now the repository contains mostly patterns for Poland. I am looking for contributors from around the world 🌍 — address formats, phone-number formats and other data representations differ by country, so the goal is to gather country-specific patterns for many regions.
 
